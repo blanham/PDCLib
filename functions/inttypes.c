@@ -1,12 +1,9 @@
-// ----------------------------------------------------------------------------
-// $Id$
-// ----------------------------------------------------------------------------
-// Public Domain C Library - http://pdclib.sourceforge.net
-// This code is Public Domain. Use, modify, and redistribute at will.
-// ----------------------------------------------------------------------------
-
-// ----------------------------------------------------------------------------
-// Standard C
+/* ----------------------------------------------------------------------------
+ * $Id$
+ * ----------------------------------------------------------------------------
+ * Public Domain C Library - http://pdclib.sourceforge.net
+ * This code is Public Domain. Use, modify, and redistribute at will.
+ * --------------------------------------------------------------------------*/
 
 intmax_t imaxabs( intmax_t i ) { /* TODO */ };
 imaxdiv_t imaxdiv( intmax_t numer, intmax_t denom ) { /* TODO */ };

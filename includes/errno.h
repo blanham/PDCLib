@@ -1,27 +1,34 @@
-// ----------------------------------------------------------------------------
-// $Id$
-// ----------------------------------------------------------------------------
-// Public Domain C Library - http://pdclib.sourceforge.net
-// This code is Public Domain. Use, modify, and redistribute at will.
-// ----------------------------------------------------------------------------
-// Errors
-// ----------------------------------------------------------------------------
+/* ----------------------------------------------------------------------------
+ * $Id$
+ * ----------------------------------------------------------------------------
+ * Public Domain C Library - http://pdclib.sourceforge.net
+ * This code is Public Domain. Use, modify, and redistribute at will.
+ * ----------------------------------------------------------------------------
+ * Errors
+ * --------------------------------------------------------------------------*/
 
-#ifndef __ERRNO_H
-#define __ERRNO_H __ERRNO_H
+#ifndef _ERRNO_H
+#define _ERRNO_H _ERRNO_H
 
-// TODO: Documentation
+#ifndef _PERSONALITY
+#define _PERSONALITY _PERSONALITY
+#include "__personality.h"
+#endif /* _PERSONALITY */
 
-// ----------------------------------------------------------------------------
-// DECLARATIONS
+/* TODO: Documentation */
+
+/* ----------------------------------------------------------------------------
+ * DECLARATIONS
+ * --------------------------------------------------------------------------*/
 
 extern int errno;
 
-// ----------------------------------------------------------------------------
-// DEFINES
+/* ----------------------------------------------------------------------------
+ * DEFINES
+ * --------------------------------------------------------------------------*/
 
-#define EDOM      1 // domain error
-#define EILSEQ    2 // illegal (multibyte) sequence
-#define ERANGE    3 // range error
+#define EDOM   _EDOM   /* domain error                                       */
+#define EILSEQ _EILSEQ /* illegal (multibyte) sequence                       */
+#define ERANGE _ERANGE /* range error                                        */
 
-#endif // __ERRNO_H
+#endif /* _ERRNO_H */

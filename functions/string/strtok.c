@@ -1,9 +1,9 @@
-// ----------------------------------------------------------------------------
-// $Id$
-// ----------------------------------------------------------------------------
-// Public Domain C Library - http://pdclib.sourceforge.net
-// This code is Public Domain. Use, modify, and redistribute at will.
-// ----------------------------------------------------------------------------
+/* ----------------------------------------------------------------------------
+ * $Id$
+ * ----------------------------------------------------------------------------
+ * Public Domain C Library - http://pdclib.sourceforge.net
+ * This code is Public Domain. Use, modify, and redistribute at will.
+ * --------------------------------------------------------------------------*/
 
 char * strtok( char * restrict src, const char * restrict seperators )
 {
@@ -12,24 +12,24 @@ char * strtok( char * restrict src, const char * restrict seperators )
 
     if ( src != NULL )
     {
-        // new string
+        /* new string */
         store = src;
     }
     if ( store == NULL )
     {
-        // no old string, no new string, nothing to do
+        /* no old string, no new string, nothing to do */
         return NULL;
     }
-    src += strspn( src, seperators ); // skipping leading seperators
+    src += strspn( src, seperators ); /* skipping leading seperators */
     if ( strlen( src ) == 0 )
     {
-        // no more to parse
+        /* no more to parse */
         return ( store = NULL );
     }
     token_length = strcspn( src, seperators );
     if ( src[ token_length ] == '\0' )
     {
-        // parsed to end of string
+        /* parsed to end of string */
         store = NULL;
         return src;
     }

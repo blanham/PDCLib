@@ -1,19 +1,20 @@
-// ----------------------------------------------------------------------------
-// $Id$
-// ----------------------------------------------------------------------------
-// Public Domain C Library - http://pdclib.sourceforge.net
-// This code is Public Domain. Use, modify, and redistribute at will.
-// ----------------------------------------------------------------------------
-// Format conversion of integer types
-// ----------------------------------------------------------------------------
+/* ----------------------------------------------------------------------------
+ * $Id$
+ * ----------------------------------------------------------------------------
+ * Public Domain C Library - http://pdclib.sourceforge.net
+ * This code is Public Domain. Use, modify, and redistribute at will.
+ * ----------------------------------------------------------------------------
+ * Format conversion of integer types
+ * --------------------------------------------------------------------------*/
 
-#ifndef __INTTYPES_H
-#define __INTTYPES_H __INTTYPES_H
+#ifndef _INTTYPES_H
+#define _INTTYPES_H _INTTYPES_H
 
-// TODO: Documentation
+/* TODO: Documentation */
 
-// ----------------------------------------------------------------------------
-// TYPEDEFS
+/* ----------------------------------------------------------------------------
+ * TYPEDEFS
+ * --------------------------------------------------------------------------*/
 
 typedef struct
 {
@@ -22,8 +23,9 @@ typedef struct
 }
 imaxdiv_t;
 
-// ----------------------------------------------------------------------------
-// FUNCTIONS
+/* ----------------------------------------------------------------------------
+ * FUNCTIONS
+ * --------------------------------------------------------------------------*/
 
 intmax_t imaxabs( intmax_t i );
 imaxdiv_t imaxdiv( intmax_t numer, intmax_t denom );
@@ -33,8 +35,9 @@ uintmax_t strtoumax( const char * restrict s, char * * restrict endptr, int base
 intmax_t wcstoimax( const wchar_t * restrict s, wchar_t * * restrict endptr, int base );
 uintmax_t wcstoumax( const wchar_t * restrict s, wchar_t * * restrict endptr, int base );
 
-// ----------------------------------------------------------------------------
-// MACROS (PRINT)
+/* ----------------------------------------------------------------------------
+ * MACROS (PRINT)
+ * --------------------------------------------------------------------------*/
 
 #define PRId8
 #define PRId16
@@ -144,8 +147,9 @@ uintmax_t wcstoumax( const wchar_t * restrict s, wchar_t * * restrict endptr, in
 #define PRIXMAX
 #define PRIXPTR
 
-// ----------------------------------------------------------------------------
-// MACROS (SCAN)
+/* ----------------------------------------------------------------------------
+ * MACROS (SCAN)
+ * --------------------------------------------------------------------------*/
 
 #define SCNd8
 #define SCNd16
@@ -255,4 +259,4 @@ uintmax_t wcstoumax( const wchar_t * restrict s, wchar_t * * restrict endptr, in
 #define SCNXMAX
 #define SCNXPTR
 
-#endif // __INTTYPES_H
+#endif /* _INTTYPES_H */

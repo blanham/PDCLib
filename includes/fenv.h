@@ -1,43 +1,45 @@
-// ----------------------------------------------------------------------------
-// $Id$
-// ----------------------------------------------------------------------------
-// Public Domain C Library - http://pdclib.sourceforge.net
-// This code is Public Domain. Use, modify, and redistribute at will.
-// ----------------------------------------------------------------------------
-// Floating-point environment
-// ----------------------------------------------------------------------------
+/* ----------------------------------------------------------------------------
+ * $Id$
+ * ----------------------------------------------------------------------------
+ * Public Domain C Library - http://pdclib.sourceforge.net
+ * This code is Public Domain. Use, modify, and redistribute at will.
+ * ----------------------------------------------------------------------------
+ * Floating-point environment
+ * --------------------------------------------------------------------------*/
 
-#ifndef __FENV_H
-#define __FENV_H __FENV_H
+#ifndef _FENV_H
+#define _FENV_H _FENV_H
 
-// TODO: Documentation, checking for personality
+/* TODO: Documentation */
 
-// ----------------------------------------------------------------------------
-// MACROS
+/* ----------------------------------------------------------------------------
+ * MACROS
+ * --------------------------------------------------------------------------*/
 
-// Used
-#define FE_DIVBYZERO  // TODO
-#define FE_INEXACT    // TODO
-#define FE_INVALID    // TODO
-#define FE_OVERFLOW   // TODO
-#define FE_UNDERFLOW  // TODO
-#define FE_ALL_EXCEPT // TODO
+#define FE_DIVBYZERO  /* TODO - to __intern.h / __personality.h? */
+#define FE_INEXACT    /* TODO - to __intern.h / __personality.h? */
+#define FE_INVALID    /* TODO - to __intern.h / __personality.h? */
+#define FE_OVERFLOW   /* TODO - to __intern.h / __personality.h? */
+#define FE_UNDERFLOW  /* TODO - to __intern.h / __personality.h? */
+#define FE_ALL_EXCEPT /* TODO - to __intern.h / __personality.h? */
 
-#define FE_DOWNWARD   // TODO
-#define FE_TONEAREST  // TODO
-#define FE_TOWARDZERO // TODO
-#define FE_UPWARD     // TODO
+#define FE_DOWNWARD   /* TODO - to __intern.h / __personality.h? */
+#define FE_TONEAREST  /* TODO - to __intern.h / __personality.h? */
+#define FE_TOWARDZERO /* TODO - to __intern.h / __personality.h? */
+#define FE_UPWARD     /* TODO - to __intern.h / __personality.h? */
 
-#define FE_DFL_ENV    // TODO
+#define FE_DFL_ENV    /* TODO - to __intern.h / __personality.h? */
 
-// ----------------------------------------------------------------------------
-// TYPEDEFS
+/* ----------------------------------------------------------------------------
+ * TYPEDEFS
+ * --------------------------------------------------------------------------*/
 
-typedef fenv_t;    // TODO
-typedef fexcept_t; // TODO
+typedef fenv_t;    /* TODO - to __intern.h / __personality.h? */
+typedef fexcept_t; /* TODO - to __intern.h / __personality.h? */
 
-// ----------------------------------------------------------------------------
-// FUNCTIONS
+/* ----------------------------------------------------------------------------
+ * FUNCTIONS
+ * --------------------------------------------------------------------------*/
 
 int feclearexcept( int exceptions );
 int fegetexceptflag( fexcept_t * flags, int exceptions );
@@ -53,4 +55,4 @@ int feholdexcept( fenv_t * environment );
 int fesetenv( const fenv_t * environment );
 int feupdateenv( const fenv_t * environment );
 
-#endif // __FENV_H
+#endif /* _FENV_H */

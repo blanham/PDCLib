@@ -1,0 +1,71 @@
+/* ----------------------------------------------------------------------------
+ * $Id$
+ * ----------------------------------------------------------------------------
+ * Public Domain C Library - http://pdclib.sourceforge.net
+ * This code is Public Domain. Use, modify, and redistribute at will.
+ * ----------------------------------------------------------------------------
+ * Description of the personality concept
+ * --------------------------------------------------------------------------*/
+
+The PDCLib is aimed at providing a fully conforming implementation of the C
+standard library (ISO/IEC 9899) for diverse environments.
+
+To faciliate adaption to new environments, platform-specific parts of the
+library have been seperated from the generic parts (e.g. the string functions,
+or the parsing of format strings in stdio.h).
+
+The generic part is found in includes/ and functions/. It should be compilable
+on any platform given a compliant compiler.
+
+The "personalized" part implements, for each supported environment, the non-
+generic parts of the library. Each supported environment is represented by a
+subdirectory (dubbed "personality module") in personalities/. Such a module
+usually requires a specific compiler on a specific hardware.
+
+The concept of personality modules was favored over the traditional approach
+of '#ifdef', 'configure', and complex makefiles, because it isolates the
+environment dependencies in a limited number of files in a seperate directory, instead of spreading the dependency handling all over the code base. This
+approach also minimizes dependencies on the compilation environment, so that
+very minimalistic environments (which could e.g. not run a 'configure' script)
+could still compile the PDCLib.
+
+A personality module consists of:
+
+* standard '#define's and 'typedef's that are environment dependent (e.g. those
+  defined in stdint.h and float.h);
+
+* "abstract" '#define's that specify whether certain optional features are
+  available in the environment or not (e.g. whether the environment supports
+  the optional '_Imaginary' keyword, required in 'complex.h');
+
+* "glue code", which binds standard library functions to support functions of
+  the environment (e.g. the code actually allocating the memory passed out by
+  malloc()).
+
+* a (compiler-specific) solution for the type-generic math functions declared
+  in tgmath.h.
+
+In any case, it is sufficient to copy the contents of a personality module
+(consisting of the subdirectories functions/ and includes/) into the main
+directories of the same name. Your personalized copy of the PDCLib is now
+ready to be compiled.
+
+/* ------------------------------------------------------------------------- */
+
+ADDING A NEW ENVIRONMENT
+
+In the personalities/ subdirectory, you will find a module named "template". In
+this module, you will find a complete description of all '#define's, 'typedef's
+and glue code functions that are required to build a new personality module.
+
+A new personality module could be kept in our repository, or in the repository
+of the environment it refers to.
+
+If you are an OS developer opting to use the PDCLib as your standard library,
+you would be well-advised to keep the personality module in your own repository
+since you have direct access there, and can make necessary changes yourself.
+If you are not an OS developer, or your OS can be considered stable and active
+enough to warrant its own personality module in the PDCLib repository, you are
+free to submit it; but keep two things in mind: Any code contributed to this
+project must be Public Domain, and any contribution must be reviewed by the
+maintainers first. Please double-check your code before submitting.

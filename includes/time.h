@@ -1,35 +1,46 @@
-// ----------------------------------------------------------------------------
-// $Id$
-// ----------------------------------------------------------------------------
-// Public Domain C Library - http://pdclib.sourceforge.net
-// This code is Public Domain. Use, modify, and redistribute at will.
-// ----------------------------------------------------------------------------
-// Date and time
-// ----------------------------------------------------------------------------
+/* ----------------------------------------------------------------------------
+ * $Id$
+ * ----------------------------------------------------------------------------
+ * Public Domain C Library - http://pdclib.sourceforge.net
+ * This code is Public Domain. Use, modify, and redistribute at will.
+ * ----------------------------------------------------------------------------
+ * Date and time
+ * --------------------------------------------------------------------------*/
 
-#ifndef __TIME_H
-#define __TIME_H __TIME_H
+#ifndef _TIME_H
+#define _TIME_H _TIME_H
 
-// TODO: Documentation.
+#ifndef _NULL
+#include "__intern.h"
+#endif
 
-// ----------------------------------------------------------------------------
-// MACROS
+/* TODO: Documentation. */
 
-#include "__NULL.h"
+/* ----------------------------------------------------------------------------
+ * MACROS
+ * --------------------------------------------------------------------------*/
 
-#define CLOCKS_PER_SEC // TODO - personality?
+#define NULL _NULL
 
-// ----------------------------------------------------------------------------
-// TYPES
+#define CLOCKS_PER_SEC /* TODO - to __intern.h / __personality.h? */
 
-#include "__size_t.h"
-#include "__tm.h"
+/* ----------------------------------------------------------------------------
+ * TYPES
+ * --------------------------------------------------------------------------*/
 
-typedef clock_t; // TODO - personality?
-typedef time_t;  // TODO - personality?
+/* TODO: Get struct tm into __intern.h */
 
-// ----------------------------------------------------------------------------
-// FUNCTIONS
+#ifndef _SIZE_T
+#define _SIZE_T _SIZE_T
+typedef __size_t size_t;
+#endif /* _SIZE_T */
+
+typedef clock_t; /* TODO - to __intern.h / __personality.h? */
+typedef time_t;  /* TODO - to __intern.h / __personality.h? */
+
+/* ----------------------------------------------------------------------------
+ * FUNCTIONS
+ * --------------------------------------------------------------------------*/
 
 char * asctime( const struct tm * tptr );
 clock_t clock( void );
@@ -42,4 +53,4 @@ size_t strftime( char * restrict s, size_t n, const char * restrict format,
                  const struct tm * restrict tptr );
 time_t time( time_t * tod );
 
-#endif // __TIME_H
+#endif /* _TIME_H */

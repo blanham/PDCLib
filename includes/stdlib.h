@@ -1,29 +1,35 @@
-// ----------------------------------------------------------------------------
-// $Id$
-// ----------------------------------------------------------------------------
-// Public Domain C Library - http://pdclib.sourceforge.net
-// This code is Public Domain. Use, modify, and redistribute at will.
-// ----------------------------------------------------------------------------
-// General utilities
-// ----------------------------------------------------------------------------
+/* ----------------------------------------------------------------------------
+ * $Id$
+ * ----------------------------------------------------------------------------
+ * Public Domain C Library - http://pdclib.sourceforge.net
+ * This code is Public Domain. Use, modify, and redistribute at will.
+ * ----------------------------------------------------------------------------
+ * General utilities
+ * --------------------------------------------------------------------------*/
 
-#ifndef __STDLIB_H
-#define __STDLIB_H __STDLIB_H
+#ifndef _STDLIB_H
+#define _STDLIB_H _STDLIB_H
 
-// TODO: Documentation
+#ifndef _NULL
+#include "__intern.h"
+#endif /* _NULL */
 
-// ----------------------------------------------------------------------------
-// MACROS
+/* TODO: Documentation */
 
-#include "__NULL.h"
+/* ----------------------------------------------------------------------------
+ * MACROS
+ * --------------------------------------------------------------------------*/
 
-#define EXIT_FAILURE // TODO
-#define EXIT_SUCCESS // TODO
-#define MB_CUR_MAX   // TODO
-#define RAND_MAX     // TODO
+#define NULL _NULL
 
-// ----------------------------------------------------------------------------
-// TYPEDEFS
+#define EXIT_FAILURE /* TODO */
+#define EXIT_SUCCESS /* TODO */
+#define MB_CUR_MAX   /* TODO */
+#define RAND_MAX     /* TODO */
+
+/* ----------------------------------------------------------------------------
+ * TYPEDEFS
+ * --------------------------------------------------------------------------*/
 
 typedef struct
 {
@@ -42,11 +48,19 @@ typedef struct
     long long remainder;
 } lldiv_t;
 
-#include "__size_t.h"
-#include "__wchar_t.h"
+#ifndef _SIZE_T
+#define _SIZE_T _SIZE_T
+typedef __size_t size_t
+#endif /* _SIZE_T */
 
-// ----------------------------------------------------------------------------
-// FUNCTIONS
+#ifndef _WCHAR_T
+#define _WCHAR_T _WCHAR_T
+typedef __wchar_t wchar_t
+#endif /* _WCHAR_T */
+
+/* ----------------------------------------------------------------------------
+ * FUNCTIONS
+ * --------------------------------------------------------------------------*/
 
 int abs( int i );
 long long llabs( long long i );
@@ -95,4 +109,4 @@ int atexit( void (*func) ( void ) );
 void * bsearch( const void * key, const void * base, size_t nelem, size_t size, int (*cmp) ( const void * ck, const void * ce) );
 void qsort( void * base, size_t nelem, size_t size, int (*cmp) ( const void * e1, const void * e2) );
 
-#endif // __STDLIB_H
+#endif /* _STDLIB_H */

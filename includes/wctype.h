@@ -1,27 +1,37 @@
-// ----------------------------------------------------------------------------
-// $Id$
-// ----------------------------------------------------------------------------
-// Public Domain C Library - http://pdclib.sourceforge.net
-// This code is Public Domain. Use, modify, and redistribute at will.
-// ----------------------------------------------------------------------------
-// Wide character classification and mapping utilities
-// ----------------------------------------------------------------------------
+/* ----------------------------------------------------------------------------
+ * $Id$
+ * ----------------------------------------------------------------------------
+ * Public Domain C Library - http://pdclib.sourceforge.net
+ * This code is Public Domain. Use, modify, and redistribute at will.
+ * ----------------------------------------------------------------------------
+ * Wide character classification and mapping utilities
+ * --------------------------------------------------------------------------*/
 
-#ifndef __WCTYPE_H
-#define __WCTYPE_H __WCTYPE_H
+#ifndef _WCTYPE_H
+#define _WCTYPE_H _WCTYPE_H
 
-// TODO: Documentation
+#ifndef _NULL
+#define _NULL _NULL
+#include "__intern.h"
+#endif /* _NULL */
 
-// ----------------------------------------------------------------------------
-// TYPEDEFS
+/* TODO: Documentation */
 
-#include "__wint_t.h"
+/* ----------------------------------------------------------------------------
+ * TYPEDEFS
+ * --------------------------------------------------------------------------*/
 
-typedef wctrans_t; // TODO - personality?
-typedef wctype_t;  // TODO - personality?
+#ifndef _WINT_T
+#define _WINT_T _WINT_T
+typedef __wint_t wint_t
+#endif /* _WINT_T */
 
-// ----------------------------------------------------------------------------
-// FUNCTIONS
+typedef wctrans_t; /* TODO - to __intern.h / __personality.h? */
+typedef wctype_t;  /* TODO - to __intern.h / __personality.h? */
+
+/* ----------------------------------------------------------------------------
+ * FUNCTIONS
+ * --------------------------------------------------------------------------*/
 
 int iswalnum( wint_t c );
 int iswalpha( wint_t c );
@@ -44,4 +54,4 @@ wint_t towupper( wint_t c );
 wctrans_t wctrans( const char * property );
 wctype_t wctype( const char * property );
 
-#endif // __WCTYPE_H
+#endif /* _WCTYPE_H */

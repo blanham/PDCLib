@@ -1,39 +1,49 @@
-// ----------------------------------------------------------------------------
-// $Id$
-// ----------------------------------------------------------------------------
-// Public Domain C Library - http://pdclib.sourceforge.net
-// This code is Public Domain. Use, modify, and redistribute at will.
-// ----------------------------------------------------------------------------
-// Signal handling
-// ----------------------------------------------------------------------------
+/* ----------------------------------------------------------------------------
+ * $Id$
+ * ----------------------------------------------------------------------------
+ * Public Domain C Library - http://pdclib.sourceforge.net
+ * This code is Public Domain. Use, modify, and redistribute at will.
+ * ----------------------------------------------------------------------------
+ * Signal handling
+ * --------------------------------------------------------------------------*/
 
-#ifndef __SIGNAL_H
-#define __SIGNAL_H __SIGNAL_H
+#ifndef _SIGNAL_H
+#define _SIGNAL_H _SIGNAL_H
 
-// TODO: Documentation
+#ifndef _NULL
+#include "__intern.h"
+#endif
 
-// ----------------------------------------------------------------------------
-// MACROS
+/* TODO: Documentation */
 
-#define SIGABRT // TODO - personality?
-#define SIGFPE  // TODO - personality?
-#define SIGILL  // TODO - personality?
-#define SIGINT  // TODO - personality?
-#define SIGSEGV // TODO - personality?
-#define SIGTERM // TODO - personality?
-#define SIG_DFL // TODO - personality?
-#define SIG_ERR // TODO - personality?
-#define SIG_IGN // TODO - personality?
+/* ----------------------------------------------------------------------------
+ * MACROS
+ * --------------------------------------------------------------------------*/
 
-// ----------------------------------------------------------------------------
-// TYPEDEFS
+#define SIGABRT _SIGABRT
+#define SIGFPE  _SIGFPE
+#define SIGILL  _SIGILL
+#define SIGINT  _SIGINT
+#define SIGSEGV _SIGSEGV
+#define SIGTERM _SIGTERM
+#define SIG_DFL _SIG_DFL
+#define SIG_ERR _SIG_ERR
+#define SIG_IGN _SIG_IGN
 
-typedef sig_atomic_t; // TODO - personality?
+/* ----------------------------------------------------------------------------
+ * TYPEDEFS
+ * --------------------------------------------------------------------------*/
 
-// ----------------------------------------------------------------------------
-// FUNCTIONS
+#ifndef _SIG_ATOMIC_T
+#define _SIG_ATOMIC_T _SIG_ATOMIC_T
+typedef __sig_atomic_t sig_atomic_t;
+#endif /* _SIG_ATOMIC_T
 
-int raise( int sig );                                        // TODO
-void ( * signal( int sig, void ( *func )( int ) ) ) ( int ); // TODO
+/* ----------------------------------------------------------------------------
+ * FUNCTIONS
+ * --------------------------------------------------------------------------*/
 
-#endif // __SIGNAL_H
+int raise( int sig );                                        /* TODO */
+void ( * signal( int sig, void ( *func )( int ) ) ) ( int ); /* TODO */
+
+#endif /* _SIGNAL_H */

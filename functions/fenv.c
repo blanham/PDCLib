@@ -1,9 +1,9 @@
-// ----------------------------------------------------------------------------
-// $Id$
-// ----------------------------------------------------------------------------
-// Public Domain C Library - http://pdclib.sourceforge.net
-// This code is Public Domain. Use, modify, and redistribute at will.
-// ----------------------------------------------------------------------------
+/* ----------------------------------------------------------------------------
+ * $Id$
+ * ----------------------------------------------------------------------------
+ * Public Domain C Library - http://pdclib.sourceforge.net
+ * This code is Public Domain. Use, modify, and redistribute at will.
+ * --------------------------------------------------------------------------*/
 
 int feclearexcept( int exceptions ) { /* TODO */ };
 int fegetexceptflag( fexcept_t * flags, int exceptions ) { /* TODO */ };

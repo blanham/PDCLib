@@ -1,39 +1,56 @@
-// ----------------------------------------------------------------------------
-// $Id$
-// ----------------------------------------------------------------------------
-// Public Domain C Library - http://pdclib.sourceforge.net
-// This code is Public Domain. Use, modify, and redistribute at will.
-// ----------------------------------------------------------------------------
-// Extended multibyte and wide character utilities
-// ----------------------------------------------------------------------------
+/* ----------------------------------------------------------------------------
+ * $Id$
+ * ----------------------------------------------------------------------------
+ * Public Domain C Library - http://pdclib.sourceforge.net
+ * This code is Public Domain. Use, modify, and redistribute at will.
+ * ----------------------------------------------------------------------------
+ * Extended multibyte and wide character utilities
+ * --------------------------------------------------------------------------*/
 
-#ifndef __WCHAR_H
-#define __WCHAR_H __WCHAR_H
+#ifndef _WCHAR_H
+#define _WCHAR_H _CHAR_H
 
-// TODO: Documentation
+#ifndef _NULL
+#include "__intern.h"
+#endif
 
-// ----------------------------------------------------------------------------
-// MACROS
+/* TODO: Documentation */
 
-#include "__NULL.h"
-#include "__WCHAR.h"
+/* ----------------------------------------------------------------------------
+ * MACROS
+ * --------------------------------------------------------------------------*/
 
-#define WEOF       // TODO - personality?
+#define NULL _NULL
+#define WCHAR_MAX _WCHAR_MAX
+#define WCHAR_MIN _WCHAR_MIN
+#define WEOF _WEOF
 
-// ----------------------------------------------------------------------------
-// TYPEDEFS
+/* ----------------------------------------------------------------------------
+ * TYPEDEFS
+ * --------------------------------------------------------------------------*/
 
-#include "__tm.h"
-#include "__size_t.h"
-#include "__wchar_t.h"
-#include "__wint_t.h"
+/* TODO: Get struct tm into __intern.h */
 
-typedef mbstate_t; // TODO - personality?
-typedef size_t;    // TODO - personality?
-typedef wint_t;    // TODO - personality?
+#ifndef _SIZE_T
+#define _SIZE_T _SIZE_T
+typedef __size_t size_t;
+#endif /* _SIZE_T */
 
-// ----------------------------------------------------------------------------
-// FUNCTIONS
+#ifndef _WCHAR_T
+#define _WCHAR_T _WCHAR_T
+typedef __wchar_t wchar_t;
+#endif /* _WCHAR_T */
+
+#ifndef _WINT_T
+#define _WINT_T _WINT_T
+typedef __wint_t wint_t;
+#endif /* _WINT_T */
+
+typedef mbstate_t; /* TODO - to __intern.h / __personality.h? */
+
+/* ----------------------------------------------------------------------------
+ * FUNCTIONS
+ * --------------------------------------------------------------------------*/
 
 wint_t fgetwc( FILE * stream );
 wchar_t * fgetws( wchar_t * restrict s, int n, FILE * restrict stream );
@@ -101,4 +118,4 @@ wchar_t * wcsrchr( const wchar_t * s, wchar_t c );
 wchar_t * wcsstr( const wchar_t * s1, const wchar_t * s2 );
 wchar_t * wmemchr( const wchar_t * s, wchar_t c, size_t n);
 
-#endif // __WCHAR_H
+#endif /* _WCHAR_H */
