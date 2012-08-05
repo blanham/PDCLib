@@ -111,12 +111,14 @@ int main( void )
     TESTCASE( fputc( 'x', file ) == 'x' );
     TESTCASE( fclose( file ) == 0 );
     /* check that file 1 exists */
-    TESTCASE( fopen( testfile1, "r" ) != NULL );
+    TESTCASE( ( file = fopen( testfile1, "r" ) ) != NULL );
+    TESTCASE( fclose( file ) == 0 );
     /* rename file 1 to file 2 */
     TESTCASE( _PDCLIB_rename( testfile1, testfile2 ) == 0 );
     /* check that file 2 exists, file 1 does not */
     TESTCASE( fopen( testfile1, "r" ) == NULL );
-    TESTCASE( fopen( testfile2, "r" ) != NULL );
+    TESTCASE( ( file = fopen( testfile2, "r" ) ) != NULL );
+    TESTCASE( fclose( file ) == 0 );
     /* create another file 1 */
     TESTCASE( ( file = fopen( testfile1, "w" ) ) != NULL );
     TESTCASE( fputc( 'x', file ) == 'x' );

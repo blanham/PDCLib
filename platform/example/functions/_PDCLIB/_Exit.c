@@ -6,20 +6,18 @@
    Permission is granted to use, modify, and / or redistribute at will.
 */
 
-/* This is an example implementation of _PDCLIB_exit() fit for use with POSIX
-   kernels.
+/* This is a stub implementation of _PDCLIB_Exit
 */
 
 #include <stdlib.h>
 
 #ifndef REGTEST
 #include <_PDCLIB_glue.h>
-
-extern void _exit( int status ) _PDCLIB_NORETURN;
+#include <errno.h>
 
 void _PDCLIB_Exit( int status )
 {
-    _exit( status );
+    errno = ENOTSUP;
 }
 
 #endif

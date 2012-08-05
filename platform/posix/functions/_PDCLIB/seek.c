@@ -15,7 +15,7 @@
 
 #include "/usr/include/errno.h"
 
-extern int lseek( int fd, int offset, int whence );
+extern _PDCLIB_int64_t lseek64( int fd, _PDCLIB_int64_t offset, int whence );
 
 _PDCLIB_int64_t _PDCLIB_seek( struct _PDCLIB_file_t * stream, _PDCLIB_int64_t offset, int whence )
 {
@@ -27,11 +27,14 @@ _PDCLIB_int64_t _PDCLIB_seek( struct _PDCLIB_file_t * stream, _PDCLIB_int64_t of
             /* EMPTY - OK */
             break;
         default:
+            /* See comments on implementation-defined errno values in
+               <_PDCLIB_config.h>.
+            */
             _PDCLIB_errno = _PDCLIB_ERROR;
             return EOF;
             break;
     }
-    _PDCLIB_int64_t rc = lseek( stream->handle, offset, whence );
+    _PDCLIB_int64_t rc = lseek64( stream->handle, offset, whence );
     if ( rc != EOF )
     {
         stream->ungetidx = 0;
@@ -42,11 +45,11 @@ _PDCLIB_int64_t _PDCLIB_seek( struct _PDCLIB_file_t * stream, _PDCLIB_int64_t of
     }
     switch ( errno )
     {
-        /* See comments on implementation-defined errno values in
-           <_PDCLIB_config.h>.
-        */
         case EBADF:
         case EFAULT:
+            /* See comments on implementation-defined errno values in
+               <_PDCLIB_config.h>.
+            */
             _PDCLIB_errno = _PDCLIB_ERROR;
             break;
         default:

@@ -13,6 +13,7 @@
 #include <stdint.h>
 #include <stddef.h>
 
+int brk( void * );
 void * sbrk( intptr_t );
 
 #ifndef _PDCLIB_GLUE_H
@@ -44,7 +45,7 @@ void * _PDCLIB_allocpages( int const n )
     /* increasing or decreasing heap - standard operation */
     void * oldbreak = membreak;
     membreak = (void *)( (char *)membreak + ( n * _PDCLIB_PAGESIZE ) );
-    if ( sbrk( (char*)membreak - (char*)oldbreak ) == membreak )
+    if ( brk( membreak ) == 0 )
     {
         /* successful */
         return oldbreak;
@@ -62,6 +63,8 @@ void * _PDCLIB_allocpages( int const n )
 
 int main( void )
 {
+#ifndef REGTEST
+    {
     char * startbreak = sbrk( 0 );
     TESTCASE( _PDCLIB_allocpages( 0 ) );
     TESTCASE( ( (char *)sbrk( 0 ) - startbreak ) <= _PDCLIB_PAGESIZE );
@@ -72,6 +75,9 @@ int main( void )
     TESTCASE( sbrk( 0 ) == startbreak + ( 6 * _PDCLIB_PAGESIZE ) );
     TESTCASE( _PDCLIB_allocpages( -3 ) );
     TESTCASE( sbrk( 0 ) == startbreak + ( 3 * _PDCLIB_PAGESIZE ) );
+    }
+#endif
+    return TEST_RESULTS;
 }
 
 #endif

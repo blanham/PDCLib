@@ -6,60 +6,18 @@
    Permission is granted to use, modify, and / or redistribute at will.
 */
 
-/* This is an example implementation of _PDCLIB_fillbuffer() fit for
-   use with POSIX kernels.
+/* This is a stub version of _PDCLIB_fillbuffer
 */
 
 #include <stdio.h>
 
 #ifndef REGTEST
 #include <_PDCLIB_glue.h>
-
-#include </usr/include/errno.h>
-
-typedef long ssize_t;
-extern ssize_t read( int fd, void * buf, size_t count );
+#include <errno.h>
 
 int _PDCLIB_fillbuffer( struct _PDCLIB_file_t * stream )
 {
-    /* No need to handle buffers > INT_MAX, as PDCLib doesn't allow them */
-    ssize_t rc = read( stream->handle, stream->buffer, stream->bufsize );
-    if ( rc > 0 )
-    {
-        /* Reading successful. */
-        if ( ! ( stream->status & _PDCLIB_FBIN ) )
-        {
-            /* TODO: Text stream conversion here */
-        }
-        stream->pos.offset += rc;
-        stream->bufend = rc;
-        stream->bufidx = 0;
-        return 0;
-    }
-    if ( rc < 0 )
-    {
-        /* Reading error */
-        switch ( errno )
-        {
-            /* See comments on implementation-defined errno values in
-               <_PDCLIB_config.h>.
-            */
-            case EBADF:
-            case EFAULT:
-            case EINTR:
-            case EINVAL:
-            case EIO:
-                _PDCLIB_errno = _PDCLIB_ERROR;
-                break;
-            default:
-                /* This should be something like EUNKNOWN. */
-                _PDCLIB_errno = _PDCLIB_ERROR;
-                break;
-        }
-        stream->status |= _PDCLIB_ERRORFLAG;
-        return EOF;
-    }
-    /* End-of-File */
+    errno = ENOTSUP; 
     stream->status |= _PDCLIB_EOFFLAG;
     return EOF;
 }

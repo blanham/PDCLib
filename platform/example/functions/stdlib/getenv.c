@@ -6,7 +6,7 @@
    Permission is granted to use, modify, and / or redistribute at will.
 */
 
-/* This is an example implementation of getenv() fit for use with POSIX kernels.
+/* This is a stub implementation of getenv
 */
 
 #include <string.h>
@@ -14,20 +14,8 @@
 
 #ifndef REGTEST
 
-extern char * * environ;
-
 char * getenv( const char * name )
 {
-    size_t len = strlen( name );
-    size_t index = 0;
-    while ( environ[ index ] != NULL )
-    {
-        if ( strncmp( environ[ index ], name, len ) == 0 )
-        {
-            return environ[ index ] + len + 1;
-        }
-        index++;
-    }
     return NULL;
 }
 
@@ -38,8 +26,6 @@ char * getenv( const char * name )
 
 int main( void )
 {
-    TESTCASE( strcmp( getenv( "SHELL" ), "/bin/bash" ) == 0 );
-    /* TESTCASE( strcmp( getenv( "SHELL" ), "/bin/sh" ) == 0 ); */
     return TEST_RESULTS;
 }
 
