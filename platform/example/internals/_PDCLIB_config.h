@@ -274,13 +274,14 @@ typedef char * _PDCLIB_va_list;
    to an appropriate value. (Too small, and malloc() will call the kernel too
    often. Too large, and you will waste memory.)
 */
-#define _PDCLIB_PAGESIZE 4096
+#define _PDCLIB_MALLOC_PAGESIZE 4096
+#define _PDCLIB_MALLOC_ALIGN 16
+#define _PDCLIB_MALLOC_GRANULARITY 64*1024
+#define _PDCLIB_MALLOC_TRIM_THRESHOLD 2*1024*1024
+#define _PDCLIB_MALLOC_MMAP_THRESHOLD 256*1024
+#define _PDCLIB_MALLOC_RELEASE_CHECK_RATE 4095
 
-/* Set this to the minimum memory node size. Any malloc() for a smaller size
-   will be satisfied by a malloc() of this size instead (to avoid excessive
-   fragmentation).
-*/
-#define _PDCLIB_MINALLOC 8
+/* TODO: Better document these */
 
 /* I/O ---------------------------------------------------------------------- */
 

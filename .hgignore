@@ -1,0 +1,10 @@
+syntax: glob
+*.o
+*.exe
+*.d
+*.a
+*.dll
+*.so
+*.dylib
+*.dso
+*~
