@@ -8,3 +8,4 @@ syntax: glob
 *.dylib
 *.dso
 *~
+html/*/*.html
