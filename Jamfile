@@ -46,3 +46,19 @@ if ! $(PDCLIB_NO_TEST) {
         RegTest $(regtest) : $(regtestfile) ;
     }
 }
+
+rule HtmlMan { 
+    DEPENDS htmlman : $(<) ;
+    DEPENDS $(<) : $(<:D) ;
+    DEPENDS $(<) : $(>) ;
+    MkDir $(<:D) ;
+}
+
+actions HtmlMan {
+    mandoc -Thtml -Oincludes=../3/%I.html -Oman=../%S/%N.html -Ostyle=../style.css $(>) >$(<)
+}
+
+for manpg in [ GLOB man : *.3 ] {
+    local section = [ SPLIT $(manpg:S) : . ] ;
+    HtmlMan [ FDirName html $(section) $(manpg:B).html ] : $(manpg) ;
+}
