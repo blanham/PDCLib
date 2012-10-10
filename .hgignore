@@ -8,4 +8,5 @@ syntax: glob
 *.dylib
 *.dso
 *~
+*.sublime-workspace
 html/*/*.html
