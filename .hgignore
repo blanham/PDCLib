@@ -7,6 +7,8 @@ syntax: glob
 *.so
 *.dylib
 *.dso
+*_t
+*_r
 *~
 *.sublime-workspace
 html/*/*.html
